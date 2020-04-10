@@ -14,9 +14,9 @@
    <children>
       <BorderPane prefHeight="308.0" prefWidth="595.0">
          <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="26.0" prefWidth="486.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="125.0" prefWidth="370.0" text="UDP Server" textAlignment="CENTER">
+                  <Label prefHeight="78.0" prefWidth="361.0" text="UDP Server" textAlignment="CENTER">
                      <font>
                         <Font name="Calibri Bold" size="52.0" />
                      </font></Label>
@@ -36,18 +36,34 @@
          <bottom>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox prefHeight="95.0" prefWidth="491.0">
                      <children>
-                        <FlowPane prefHeight="200.0" prefWidth="200.0">
+                        <FlowPane prefHeight="54.0" prefWidth="492.0">
                            <children>
-                              <Label text="Label" />
-                              <Label text="Label" />
-                              <Label text="Label" />
-                              <Label text="Label" />
-                              <ToggleButton mnemonicParsing="false" prefHeight="4.0" prefWidth="163.0" text="ToggleButton" />
+                              <Label text="Server on: " />
+                              <Label text="255.255.255.255" />
+                              <Label text=" : " />
+                              <Label text="7000" />
+                              <ToggleButton mnemonicParsing="false" prefHeight="35.0" prefWidth="48.0" text="On" />
                            </children></FlowPane>
+                        <FlowPane prefHeight="32.0" prefWidth="387.0">
+                           <children>
+                              <Label text="Broadcasting on port: ">
+                                 <graphic>
+                                    <Label text="Label" />
+                                 </graphic>
+                              </Label>
+                              <Label text="7007" />
+                              <ToggleButton mnemonicParsing="false" prefHeight="41.0" prefWidth="48.0" text="On" />
+                           </children>
+                        </FlowPane>
                      </children>
                   </VBox>
+                  <FlowPane prefHeight="100.0" prefWidth="50.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="147.0" text="Press for clear log" textAlignment="RIGHT" />
+                     </children>
+                  </FlowPane>
                </children>
             </HBox>
          </bottom></BorderPane>
