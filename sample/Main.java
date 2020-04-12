@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("UDP SERVER");
+        primaryStage.setTitle("UDP SERVER / EMULATOR");
         primaryStage.setScene(new Scene(root, 600, 575));
         primaryStage.show();
     }
