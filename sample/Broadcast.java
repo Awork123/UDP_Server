@@ -1,47 +1,37 @@
 package sample;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.*;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 public class Broadcast implements Runnable{
-    private boolean broadcasting = true;
-    private DatagramSocket socket;
-    private int broadcastPort = 7007;
-    private String message = "Listening";
+DatagramSocket broadSocket;
+DatagramPacket pakcetSending;
+int sendingPort = 7007;
+public String message = "Server is ready";
 
 
-    public void broadcasting(){
-        try {
-            socket = new DatagramSocket();
-            socket.setBroadcast(true);
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
+    //Automatic implementation from Runnable
+    @Override
+    public void run() {
+
+
     }
-
-
-    public void broadcastingMessage() {
+    public void broadcastMessage(String message) throws SocketException {
         try {
-            socket = new DatagramSocket();
-            byte[] messageBytes = message.getBytes();
-            DatagramPacket datagramPacket = new DatagramPacket(messageBytes, messageBytes.length, InetAddress.getByName("255.255.255.2550") ,7007);
-            socket.send(datagramPacket);
-            socket.close();
-            System.out.println("brodcasting");
-
-        } catch (SocketException | UnknownHostException e) {
+            broadSocket = new DatagramSocket();
+            byte[] buf = message.getBytes();
+            pakcetSending = new DatagramPacket(buf, buf.length, InetAddress.getByName("255.255.255.255"), sendingPort);
+            broadSocket.send(pakcetSending);
+            broadSocket.close();
+        } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void run() {
 
     }
-
-
 }

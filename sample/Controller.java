@@ -7,18 +7,16 @@ import javafx.scene.canvas.*;
 import java.awt.Canvas;
 
 public class Controller {
-    Broadcast broadcast;
+    @FXML
+    TableView<Broadcast> table;
 
-    @FXML
-    TableView<UdpMessage> table;
-    @FXML
+    Broadcast broadcast;
     private Canvas canvas;
 
     GraphicsContext graphicContextCanvas;
 
     public void initialize() {
-        broadcast = new Broadcast();
-        new Thread(broadcast).start();
+
     }
 
 
