@@ -22,13 +22,13 @@
          <children>
             <FlowPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="Clear log" />
+                  <Button fx:id="Button" mnemonicParsing="false" text="Clear log" />
                </children>
             </FlowPane>
          </children></HBox>
    </bottom>
    <left>
-      <TableView prefHeight="230.0" prefWidth="247.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" prefHeight="230.0" prefWidth="247.0" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn prefWidth="151.0" text="Message" />
             <TableColumn prefWidth="93.0" text="IP" />
@@ -36,6 +36,6 @@
       </TableView>
    </left>
    <right>
-      <Canvas height="227.0" width="354.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="canvasView" height="227.0" width="354.0" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>
