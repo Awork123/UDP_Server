@@ -28,4 +28,14 @@ public class Message {
     public int getLength() {
         return length;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "message='" + message + '\'' +
+                ", IP='" + IP + '\'' +
+                ", port=" + port +
+                ", length=" + length +
+                '}';
+    }
 }
