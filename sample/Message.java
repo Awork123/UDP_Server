@@ -17,41 +17,15 @@ public class Message {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public String getIP() {
         return IP;
     }
-
-    public void setIP(String IP) {
-        this.IP = IP;
-    }
-//Any reason to get / set port?
+    //Any reason to getport?
     public int getPort() {
         return port;
     }
 
-    public void setPort(int port) {
-        this.port = port;
-    }
-
     public int getLength() {
         return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    @Override
-    public String toString() {
-        return "Message{" +
-                "message='" + message + '\'' +
-                ", IP='" + IP + '\'' +
-                ", port=" + port +
-                ", length=" + length +
-                '}';
     }
 }
