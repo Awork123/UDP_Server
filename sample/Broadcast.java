@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 
 public class Broadcast implements Runnable{
 DatagramSocket broadSocket;
-DatagramPacket pakcetSending;
+DatagramPacket packetSending;
 int sendingPort = 7007;
 public String message = "Server is ready";
 
@@ -18,14 +18,14 @@ public String message = "Server is ready";
     @Override
     public void run() {
 
-
     }
+
     public void broadcastMessage(String message) throws SocketException {
         try {
             broadSocket = new DatagramSocket();
             byte[] buf = message.getBytes();
-            pakcetSending = new DatagramPacket(buf, buf.length, InetAddress.getByName("255.255.255.255"), sendingPort);
-            broadSocket.send(pakcetSending);
+            packetSending = new DatagramPacket(buf, buf.length, InetAddress.getByName("255.255.255.255"), sendingPort);
+            broadSocket.send(packetSending);
             broadSocket.close();
         } catch (UnknownHostException e) {
             e.printStackTrace();

@@ -2,26 +2,34 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-import javafx.scene.canvas.*;
-
-import java.awt.Canvas;
+import javafx.event.ActionEvent;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 
 public class Controller {
+    private GraphicsContext graphicsContext;
     @FXML
-    TableView<Broadcast> table;
-
-    Broadcast broadcast;
+    private TableView<Message> table;
+    @FXML
     private Canvas canvas;
 
-    GraphicsContext graphicContextCanvas;
-
     public void initialize() {
+        this.graphicsContext = canvas.getGraphicsContext2D();
+    }
 
+    private void draw(GraphicsContext graphicsContext) {
+      //  graphicsContext.fillOval(x,y,20,20);
     }
 
 
-    public void clearTheLog() {
+
+
+
+
+  /*  public void clearTheLog(ActiveEvent event) {
+        table.getItems().clear();
         System.out.println("clearing the log");
     }
+   */
 }
 

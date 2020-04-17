@@ -12,6 +12,7 @@ public class Connection {
     int sendingPort = 7007;
 
 
+
     public void messageRecieving() throws IOException {
         connSocket = new DatagramSocket(recievingPort);
         byte[] bytes = new byte[256];

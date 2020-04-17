@@ -28,10 +28,10 @@
          </children></HBox>
    </bottom>
    <left>
-      <TableView fx:id="tableView" prefHeight="230.0" prefWidth="247.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" prefHeight="230.0" prefWidth="247.0" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn prefWidth="151.0" text="Message" />
-            <TableColumn prefWidth="93.0" text="IP" />
+            <TableColumn fx:id="tableMessage" prefWidth="151.0" text="Message" />
+            <TableColumn fx:id="tableIP" prefWidth="93.0" text="IP" />
          </columns>
       </TableView>
    </left>
