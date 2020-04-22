@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <Button layoutX="50" layoutY="100" text="Button" />
    <top>
       <FlowPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -28,14 +29,18 @@
          </children></HBox>
    </bottom>
    <left>
-      <TableView fx:id="table" prefHeight="230.0" prefWidth="247.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn fx:id="tableMessage" prefWidth="151.0" text="Message" />
-            <TableColumn fx:id="tableIP" prefWidth="93.0" text="IP" />
+            <TableColumn text="Command">
+            </TableColumn>
+            <TableColumn text="IP">
+            </TableColumn>
+            <TableColumn text="Port">
+            </TableColumn>
          </columns>
       </TableView>
    </left>
    <right>
-      <Canvas fx:id="canvasView" height="227.0" width="354.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="canvas" height="227.0" width="354.0" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>
