@@ -39,10 +39,6 @@ class NetworkConnection implements Runnable{
             socket = new DatagramSocket(udpPort);
             socket.receive(packet);
             UdpMessage message = new UdpMessage(packet.getData(), packet.getLength(), packet.getAddress() , packet.getPort());
-            String command = new String(packet.getData(), 0, packet.getLength());
-            System.out.println("received: "+ command + " : " + message);
-
-            System.out.println(command +"length: " +packet.getLength());
 
 
             /*
@@ -69,12 +65,10 @@ class NetworkConnection implements Runnable{
                // System.out.println("Changing Shape of Pixel");
                 messageHandler.receiveMessage(message);
             }
-
             else {
                 System.out.println("Invalid command: '"+ command + "' : " + message);
                 System.out.println();
             }
-
 */
 
             messageHandler.receiveMessage(message);

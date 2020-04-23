@@ -41,7 +41,7 @@ public class UdpMessage {
     public String getIp() {
         return ip;
     }
-
+    public int getPort() { return port; }
 
     @Override
     public String toString() {
