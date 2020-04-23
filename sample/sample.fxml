@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <Button layoutX="50" layoutY="100" text="Button" />
    <top>
@@ -31,11 +32,23 @@
    <left>
       <TableView fx:id="tableView" BorderPane.alignment="CENTER">
          <columns>
+
             <TableColumn text="Command">
+               <cellValueFactory>
+                       <PropertyValueFactory property="message" />
+               </cellValueFactory>
             </TableColumn>
+
             <TableColumn text="IP">
+               <cellValueFactory>
+                  <PropertyValueFactory property="ip" />
+               </cellValueFactory>
             </TableColumn>
+
             <TableColumn text="Port">
+               <cellValueFactory>
+                  <PropertyValueFactory property="port" />
+               </cellValueFactory>
             </TableColumn>
          </columns>
       </TableView>
