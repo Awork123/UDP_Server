@@ -41,36 +41,6 @@ class NetworkConnection implements Runnable{
             UdpMessage message = new UdpMessage(packet.getData(), packet.getLength(), packet.getAddress() , packet.getPort());
 
 
-            /*
-            if (command.equals("launch")){
-                System.out.println("Changing Color on Pixel");
-            }
-            else if (command.equals("move down")){
-                //System.out.println("Moving Pixel Down");
-                messageHandler.receiveMessage(message);
-            }
-            else if (command.equals("move up")){
-                //System.out.println("Moving Pixel up");
-                messageHandler.receiveMessage(message);
-            }
-            else if (command.equals("speed up")) {
-               // System.out.println("Increasing Movement Speed of Pixel");
-                messageHandler.receiveMessage(message);
-            }
-            else if (command.equals("speed down")){
-              //  System.out.println("Decreasing Movement Speed of Pixel");
-                messageHandler.receiveMessage(message);
-            }
-            else if (command.equals("change shape")){
-               // System.out.println("Changing Shape of Pixel");
-                messageHandler.receiveMessage(message);
-            }
-            else {
-                System.out.println("Invalid command: '"+ command + "' : " + message);
-                System.out.println();
-            }
-*/
-
             messageHandler.receiveMessage(message);
             return message;
         }

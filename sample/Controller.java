@@ -89,11 +89,11 @@ public class Controller {
             }
 
         }
-        else if (udpMessage.getMessage().equals("StrokeSize decrease")){
-            // System.out.println("Changing Shape of Pixel");
+        else if (udpMessage.getMessage().equals("move right")){
+            pixelPositionX = pixelPositionX +2;
         }
-        else if (udpMessage.getMessage().equals("StrokeSize increase")){
-            // System.out.println("Changing Shape of Pixel");
+        else if (udpMessage.getMessage().equals("move left")){
+            pixelPositionX = pixelPositionX -2;
         }
 
         else {
