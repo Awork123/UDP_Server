@@ -2,13 +2,14 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-import java.awt.event.ActionEvent;
 import java.util.Random;
 
 public class Controller {
@@ -33,6 +34,7 @@ public class Controller {
 
     @FXML
     private TableView<UdpMessage> tableView;
+
     @FXML
     private Canvas canvas;
 
@@ -42,48 +44,39 @@ public class Controller {
         new Thread(udpConnector).start();
     }
 
-    public void receiveMessage(UdpMessage udpMessage){
+    public void receiveMessage(UdpMessage udpMessage) {
+        UdpMessage command = new UdpMessage(udpMessage.getMessage(),udpMessage.getIp(),udpMessage.getPort());
+        tableView.getItems().add(command);
         System.out.println(udpMessage);
-        gc.clearRect(0,0, canvas.getWidth(), canvas.getHeight());
-        
-        if (udpMessage.getMessage().equals("launch")){
+
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+        if (udpMessage.getMessage().equals("launch")) {
             Random rand = new Random();
-            int red = rand.nextInt(255)+1;
-            int green= rand.nextInt(255)+1;
-            int blue= rand.nextInt(255)+1;
+            int red = rand.nextInt(255) + 1;
+            int green = rand.nextInt(255) + 1;
+            int blue = rand.nextInt(255) + 1;
             System.out.println("Changing Color on Pixel");
             gc.setStroke(Color.rgb(red, green, blue));
-        }
-
-        else if (udpMessage.getMessage().equals("move down")){
-            pixelPositionY = pixelPositionY +2*speedStage;
-        }
-
-        else if (udpMessage.getMessage().equals("move up")){
-            pixelPositionY = pixelPositionY -2*speedStage;
-        }
-
-        else if (udpMessage.getMessage().equals("speed up")) {
+        } else if (udpMessage.getMessage().equals("move down")) {
+            pixelPositionY = pixelPositionY + 2 * speedStage;
+        } else if (udpMessage.getMessage().equals("move up")) {
+            pixelPositionY = pixelPositionY - 2 * speedStage;
+        } else if (udpMessage.getMessage().equals("speed up")) {
             if (speedStage < 10) {
-                speedStage = speedStage +2;
+                speedStage = speedStage + 2;
             }
-        }
-
-        else if (udpMessage.getMessage().equals("speed down")){
+        } else if (udpMessage.getMessage().equals("speed down")) {
             if (speedStage > 1) {
                 speedStage = speedStage - 2;
             }
-        }
-        else if (udpMessage.getMessage().equals("move right")){
-            pixelPositionX = pixelPositionX +2;
-        }
-
-        else if (udpMessage.getMessage().equals("move left")){
-            pixelPositionX = pixelPositionX -2;
-        }
-
-        else {
-            System.out.println("Invalid command: '"  + udpMessage.getMessage());
+        } else if (udpMessage.getMessage().equals("move right")) {
+            pixelPositionX = pixelPositionX + 2;
+        } else if (udpMessage.getMessage().equals("move left")) {
+            pixelPositionX = pixelPositionX - 2;
+            System.out.println("");
+        } else {
+            System.out.println("Invalid command: '" + udpMessage.getMessage());
         }
 
         gc.strokeOval(pixelPositionX, pixelPositionY, pixelWidth, pixelHeight);
@@ -91,7 +84,20 @@ public class Controller {
     }
 
     //
-    public void clearLog(javafx.event.ActionEvent actionEvent) {
+    public void clearLog(ActionEvent actionEvent) {
         tableView.getItems().clear();
+        System.out.println("clearlog");
     }
+
+    public void resetPixel(ActionEvent event) {
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        speedStage = 1;
+        pixelPositionX = 75;
+        pixelPositionY = 125;
+        pixelWidth = 20;
+        pixelHeight = 20;
+        gc.strokeOval(pixelPositionX, pixelPositionY, pixelWidth, pixelHeight);
+        System.out.println("fdfd");
+    }
+
 }

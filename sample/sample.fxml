@@ -22,9 +22,14 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
+            <FlowPane prefHeight="100.0" prefWidth="358.0">
+               <children>
+                  <Button fx:id="Button" mnemonicParsing="false" onAction="#clearLog" text="Clear log" />
+               </children>
+            </FlowPane>
             <FlowPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="Button" mnemonicParsing="false"  onAction="#clearLog" text="Clear log" />
+                  <Button fx:id="Button1" mnemonicParsing="false" onAction="#resetPixel" text="Reset" />
                </children>
             </FlowPane>
          </children></HBox>
@@ -35,7 +40,7 @@
 
             <TableColumn text="Command">
                <cellValueFactory>
-                       <PropertyValueFactory property="message" />
+                  <PropertyValueFactory property="message" />
                </cellValueFactory>
             </TableColumn>
 
@@ -54,6 +59,6 @@
       </TableView>
    </left>
    <right>
-      <Canvas fx:id="canvas" height="372.0" width="354.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="canvas" height="227.0" width="354.0" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>
