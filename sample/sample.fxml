@@ -2,10 +2,10 @@
 
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <Button layoutX="50" layoutY="100" text="Button" />
    <top>
@@ -24,7 +24,7 @@
          <children>
             <FlowPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="Button" mnemonicParsing="false" text="Clear log" />
+                  <Button fx:id="Button" mnemonicParsing="false"  onAction="#clearLog" text="Clear log" />
                </children>
             </FlowPane>
          </children></HBox>
@@ -54,6 +54,6 @@
       </TableView>
    </left>
    <right>
-      <Canvas fx:id="canvas" height="227.0" width="354.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="canvas" height="372.0" width="354.0" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>

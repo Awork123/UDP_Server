@@ -6,9 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
+import java.awt.event.ActionEvent;
 import java.util.Random;
 
 public class Controller {
@@ -18,12 +18,12 @@ public class Controller {
     private NetworkConnection udpConnector;
     GraphicsContext gc;
     int speedStage = 1;
-    public int pixelPositionX = 175;
-    public int pixelPositionY = 100;
+    public int pixelPositionX = 75;
+    public int pixelPositionY = 125;
     public int pixelWidth = 20;
     public int pixelHeight = 20;
-    public void initialize()
-    {
+
+    public void initialize() {
         System.out.println("initialize");
         tableView.setItems(commands);
         startUdpConnection();
@@ -33,16 +33,6 @@ public class Controller {
 
     @FXML
     private TableView<UdpMessage> tableView;
-
-    //@FXML
-    //private TextField tableMessage;
-
-   // @FXML
-   // private TextField tableIP;
-
-  //  @FXML
-  //  private TextField tablePort;
-
     @FXML
     private Canvas canvas;
 
@@ -55,13 +45,7 @@ public class Controller {
     public void receiveMessage(UdpMessage udpMessage){
         System.out.println(udpMessage);
         gc.clearRect(0,0, canvas.getWidth(), canvas.getHeight());
-
-        UdpMessage command = new UdpMessage(udpMessage.getMessage(),udpMessage.getIp(),udpMessage.getPort());
-       // UdpMessage command = new UdpMessage(tableMessage.getText(),tableIP.getText(), tablePort.getLength());
-        tableView.getItems().add(command);
-
-
-
+        
         if (udpMessage.getMessage().equals("launch")){
             Random rand = new Random();
             int red = rand.nextInt(255)+1;
@@ -70,42 +54,44 @@ public class Controller {
             System.out.println("Changing Color on Pixel");
             gc.setStroke(Color.rgb(red, green, blue));
         }
+
         else if (udpMessage.getMessage().equals("move down")){
             pixelPositionY = pixelPositionY +2*speedStage;
-
         }
+
         else if (udpMessage.getMessage().equals("move up")){
             pixelPositionY = pixelPositionY -2*speedStage;
-
         }
+
         else if (udpMessage.getMessage().equals("speed up")) {
             if (speedStage < 10) {
                 speedStage = speedStage +2;
             }
         }
+
         else if (udpMessage.getMessage().equals("speed down")){
             if (speedStage > 1) {
                 speedStage = speedStage - 2;
             }
-
         }
         else if (udpMessage.getMessage().equals("move right")){
             pixelPositionX = pixelPositionX +2;
-
         }
+
         else if (udpMessage.getMessage().equals("move left")){
             pixelPositionX = pixelPositionX -2;
         }
 
-      //  else {
-            // System.out.println("Invalid command: '"+ command + "' : " + message);
-            //System.out.println("Invalid command: " + command);
-            //System.out.println();
-       // }
+        else {
+            System.out.println("Invalid command: '"  + udpMessage.getMessage());
+        }
 
         gc.strokeOval(pixelPositionX, pixelPositionY, pixelWidth, pixelHeight);
 
     }
 
-
+    //
+    public void clearLog(javafx.event.ActionEvent actionEvent) {
+        tableView.getItems().clear();
+    }
 }
