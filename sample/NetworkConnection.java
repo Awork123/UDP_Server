@@ -40,12 +40,9 @@ class NetworkConnection implements Runnable{
             socket.receive(packet);
             UdpMessage message = new UdpMessage(packet.getData(), packet.getLength(), packet.getAddress() , packet.getPort());
 
-
             messageHandler.receiveMessage(message);
             return message;
         }
-
-
 
         catch (IOException e) {
             return null;

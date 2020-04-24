@@ -1,3 +1,4 @@
+/*
 package sample;
 
 public class PixelStats {
@@ -13,3 +14,4 @@ public class PixelStats {
 
 
 }
+*/

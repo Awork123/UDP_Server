@@ -5,21 +5,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UdpMessage {
-    private String time;
+  //  private String time;
     private String message;
     private String ip;
-    private int length;
+  //  private int length;
     private int port;
 
     public UdpMessage(String message, String ip, int port)
     {
         SimpleDateFormat formatter;
-        formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date time = new Date();
-        this.time =formatter.format(time);
+      //  formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+      //  Date time = new Date();
+       // this.time =formatter.format(time);
         this.message = message;
         this.ip = ip;
-        this.length = message.length();
+    //    this.length = message.length();
         this.port = port;
 
     }
@@ -48,7 +48,7 @@ public class UdpMessage {
         return "From {" +
                 "ip='" + ip + '\'' +
                 ", port='" + port +'\''+
-                ", time='" + time +'\'' +
+         //       ", time='" + time +'\'' +
                 '}';
     }
 }

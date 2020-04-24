@@ -34,14 +34,14 @@ public class Controller {
     @FXML
     private TableView<UdpMessage> tableView;
 
-    @FXML
-    private TextField tableMessage;
+    //@FXML
+    //private TextField tableMessage;
 
-    @FXML
-    private TextField tableIP;
+   // @FXML
+   // private TextField tableIP;
 
-    @FXML
-    private TextField tablePort;
+  //  @FXML
+  //  private TextField tablePort;
 
     @FXML
     private Canvas canvas;
@@ -97,10 +97,11 @@ public class Controller {
             pixelPositionX = pixelPositionX -2;
         }
 
-        else {
+      //  else {
             // System.out.println("Invalid command: '"+ command + "' : " + message);
+            //System.out.println("Invalid command: " + command);
             //System.out.println();
-        }
+       // }
 
         gc.strokeOval(pixelPositionX, pixelPositionY, pixelWidth, pixelHeight);
 
