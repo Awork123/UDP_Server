@@ -14,8 +14,10 @@ import java.util.Random;
 
 public class Controller {
 
+    //
     ObservableList<UdpMessage> commands = FXCollections.observableArrayList();
 
+    //
     private NetworkConnection udpConnector;
     GraphicsContext gc;
     int speedStage = 1;
@@ -24,6 +26,13 @@ public class Controller {
     public int pixelWidth = 20;
     public int pixelHeight = 20;
 
+    //
+    @FXML
+    private TableView<UdpMessage> tableView;
+    @FXML
+    private Canvas canvas;
+
+    //
     public void initialize() {
         System.out.println("initialize");
         tableView.setItems(commands);
@@ -32,12 +41,7 @@ public class Controller {
         gc.strokeOval(pixelPositionX, pixelPositionY, pixelWidth, pixelHeight);
     }
 
-    @FXML
-    private TableView<UdpMessage> tableView;
-
-    @FXML
-    private Canvas canvas;
-
+    //
     private void startUdpConnection() {
         if (udpConnector != null) udpConnector.closeSocket();
         udpConnector = new NetworkConnection(this);
@@ -45,51 +49,75 @@ public class Controller {
     }
 
     public void receiveMessage(UdpMessage udpMessage) {
+        //Recieving the incoming messages, ip and port, and shows them at the table
         UdpMessage command = new UdpMessage(udpMessage.getMessage(),udpMessage.getIp(),udpMessage.getPort());
         tableView.getItems().add(command);
         System.out.println(udpMessage);
 
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
+        /*The recieved commands from the ESP contains different Strings
+        * The accepted commands chooses a random colour, directions and speed for the pixel */
         if (udpMessage.getMessage().equals("launch")) {
+            System.out.println("Changing Colour");
             Random rand = new Random();
             int red = rand.nextInt(255) + 1;
             int green = rand.nextInt(255) + 1;
             int blue = rand.nextInt(255) + 1;
-            System.out.println("Changing Color on Pixel");
             gc.setStroke(Color.rgb(red, green, blue));
-        } else if (udpMessage.getMessage().equals("move down")) {
+        }
+
+        else if (udpMessage.getMessage().equals("move down")) {
+            System.out.println("Moving Pixel Down");
             pixelPositionY = pixelPositionY + 2 * speedStage;
-        } else if (udpMessage.getMessage().equals("move up")) {
+        }
+
+        else if (udpMessage.getMessage().equals("move up")) {
+            System.out.println("Moving Pixel Up");
             pixelPositionY = pixelPositionY - 2 * speedStage;
-        } else if (udpMessage.getMessage().equals("speed up")) {
+        }
+
+        else if (udpMessage.getMessage().equals("speed up")) {
+            System.out.println("Speeding Up");
             if (speedStage < 10) {
                 speedStage = speedStage + 2;
             }
+
         } else if (udpMessage.getMessage().equals("speed down")) {
+            System.out.println("Speeding Down");
             if (speedStage > 1) {
                 speedStage = speedStage - 2;
             }
+
         } else if (udpMessage.getMessage().equals("move right")) {
+            System.out.println("Moving Pixel Right");
             pixelPositionX = pixelPositionX + 2;
-        } else if (udpMessage.getMessage().equals("move left")) {
+        }
+
+        else if (udpMessage.getMessage().equals("move left")) {
+            System.out.println("Moving Pixel Left");
             pixelPositionX = pixelPositionX - 2;
             System.out.println("");
         } else {
             System.out.println("Invalid command: '" + udpMessage.getMessage());
         }
 
+        //Saves the last placement for the pixel
         gc.strokeOval(pixelPositionX, pixelPositionY, pixelWidth, pixelHeight);
 
     }
 
-    //
+    //Clearing the tableView
     public void clearLog(ActionEvent actionEvent) {
+        System.out.println("Clearing Log");
         tableView.getItems().clear();
-        System.out.println("clearlog");
+
     }
 
+
+    // If the pixel is lost, reset its attributes
     public void resetPixel(ActionEvent event) {
+        System.out.println("Resetting Pixels");
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         speedStage = 1;
         pixelPositionX = 75;
@@ -97,7 +125,7 @@ public class Controller {
         pixelWidth = 20;
         pixelHeight = 20;
         gc.strokeOval(pixelPositionX, pixelPositionY, pixelWidth, pixelHeight);
-        System.out.println("fdfd");
+
     }
 
 }
