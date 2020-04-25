@@ -17,7 +17,7 @@ public class UdpMessage {
         SimpleDateFormat formatter;
         formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date time = new Date();
-        this.time =formatter.format(time);
+        this.time = formatter.format(time);
         this.message = message;
         this.ip = ip;
         this.port = port;
@@ -26,7 +26,7 @@ public class UdpMessage {
     /* Here we create the constructor that contains all the information about the message we receive, that
      * that we use in the NetworkConnection, receiveMessage method */
     public UdpMessage(byte[] message, int msgLength, InetAddress ip, int port) {
-        this(new String(message, 0, msgLength), ip.getHostAddress(), port );
+        this(new String(message, 0, msgLength), ip.getHostAddress(), port);
     }
 
     /* We create 3 constructors, that return the message, ip and port, so we can get those in our controller class
@@ -34,9 +34,11 @@ public class UdpMessage {
     public String getMessage() {
         return message;
     }
+
     public String getIp() {
         return ip;
     }
+
     public int getPort() {
         return port;
     }
@@ -46,8 +48,8 @@ public class UdpMessage {
     public String toString() {
         return "Received: " + message + " From {" +
                 "ip='" + ip + '\'' +
-                ", port='" + port +'\''+
-                ", time='" + time +'\'' +
+                ", port='" + port + '\'' +
+                ", time='" + time + '\'' +
                 '}';
     }
 }

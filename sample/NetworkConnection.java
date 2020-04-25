@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.*;
 
 /* We define our parameters and makes the function be runnable, which will do the connection loop*/
-class NetworkConnection implements Runnable{
+class NetworkConnection implements Runnable {
     private DatagramSocket socket;
     private int udpPort = 4444;
     private Controller messageHandler;
@@ -23,9 +23,8 @@ class NetworkConnection implements Runnable{
     public void setupSocket() {
         try {
             socket = new DatagramSocket(udpPort);
-        }
-        catch (SocketException e) {
-            System.out.println("IOEXCEPTION: Tried to create new datagramsocket on "+udpPort);
+        } catch (SocketException e) {
+            System.out.println("IOEXCEPTION: Tried to create new datagramsocket on " + udpPort);
             System.out.println(e.getMessage());
         }
     }
@@ -38,14 +37,12 @@ class NetworkConnection implements Runnable{
         try {
             socket = new DatagramSocket(udpPort);
             socket.receive(packet);
-            UdpMessage message = new UdpMessage(packet.getData(), packet.getLength(), packet.getAddress() , packet.getPort());
+            UdpMessage message = new UdpMessage(packet.getData(), packet.getLength(), packet.getAddress(), packet.getPort());
             messageHandler.receiveMessage(message);
             return message;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             return null;
-        }
-        finally {
+        } finally {
             socket.close();
         }
     }
@@ -64,7 +61,7 @@ class NetworkConnection implements Runnable{
             receiveMessage();
         }
 
-        while(isReceiveMessages());
+        while (isReceiveMessages());
         socket.close();
     }
 

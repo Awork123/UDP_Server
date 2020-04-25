@@ -10,7 +10,7 @@ public class Main extends Application {
 
     /* We load our fxml document and show it*/
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("El Control");
         primaryStage.setScene(new Scene(root, 800, 600));
